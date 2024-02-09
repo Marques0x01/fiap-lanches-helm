@@ -47,5 +47,6 @@ jobs:
         with:
           charts_dir: charts
           config: cr.yaml
+          charts_url: https://jonathansantoss.github.io/fiap-lanches-helm
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
