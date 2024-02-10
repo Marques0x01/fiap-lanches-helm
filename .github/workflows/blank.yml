@@ -45,13 +45,17 @@ jobs:
       - name: Package Helm
         run: helm package fiap-lanches
 
+      - name: Upload Helm Chart
+        uses: actions/upload-artifact@v2
+        with:
+          name: helm-charts
+          path: ./docs/*.tgz
+        
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         with:
           charts_dir: charts
-          config: cr.yaml
-          charts_url: https://jonathansantoss.github.io/fiap-lanches-helm
-          repository: charts
+          charts_url: https://jonathansantoss.github.io/fiap-lanches-helm/fiap-lanches
           branch: gh-pages
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
