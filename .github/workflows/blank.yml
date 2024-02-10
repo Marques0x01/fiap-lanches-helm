@@ -42,6 +42,10 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Dir charts
+        with:
+          charts_dir: charts
+
       - name: Package Helm
         run: helm package fiap-lanches
 
