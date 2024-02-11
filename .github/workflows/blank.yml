@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: helm-charts
-          path: ./docs/*.tgz
+          path: ./*.tgz
         
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
