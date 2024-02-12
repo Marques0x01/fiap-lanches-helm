@@ -25,7 +25,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -37,19 +40,24 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       
-      - name: Install Helm
-        uses: azure/setup-helm@v3
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      # - name: Install Helm
+      #   uses: azure/setup-helm@v3
+      #   env:
+      #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Package Helm
-        run: helm package fiap-lanches
+      # - name: Package Helm
+      #   run: helm package fiap-lanches
 
-      - name: Upload Helm Chart
-        uses: actions/upload-artifact@v2
-        with:
-          name: helm-charts
-          path: ./*.tgz
+      # - name: Upload Helm Chart
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: helm-charts
+      #     path: ./*.tgz
+
+      - name: Configure Git
+        run: |
+          git config user.name "Jonathan"
+          git config user.email "jonathan.gomess1@gmail.com"
         
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
