@@ -11,4 +11,14 @@ entries:
     urls:
     - https://jonathansantoss.github.io/fiap-lanches-helm/docs/fiap-lanches-0.3.0.tgz
     version: 0.3.0
-generated: "2023-11-28T10:08:50.031072324-03:00"
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-12T12:19:37.261201402Z"
+    description: A Helm chart for Kubernetes
+    digest: 2317bf175fe07ee8d8da72ebab563554fa6b7c965207e3ff21335be5cd3bc675
+    name: fiap-lanches
+    type: application
+    urls:
+    - https://github.com/jonathansantoss/fiap-lanches-helm/releases/download/fiap-lanches-0.2.0/fiap-lanches-0.2.0.tgz
+    version: 0.2.0
+generated: "2024-02-12T12:19:37.261213715Z"
