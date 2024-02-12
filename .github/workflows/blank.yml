@@ -84,9 +84,8 @@ jobs:
         
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
-        # with:
-        #   charts_dir: charts
-        #   charts_url: https://jonathansantoss.github.io/fiap-lanches-helm/fiap-lanches
-        #   branch: gh-pages
+        with:
+          charts_dir: charts
+          branch: gh-pages
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
