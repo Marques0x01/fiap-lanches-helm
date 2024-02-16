@@ -44,8 +44,8 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      # - name: Package chart
-      #   run: helm package ./
+      - name: Package chart
+        run: helm package ./
 
       # - name: Dir
       #   run: ls
@@ -88,3 +88,4 @@ jobs:
           body: Versão v.2.0 do aplicativo.  # Substitua pelo corpo do seu release
           draft: false
           prerelease: false
+          files: ./*.tgz  # Es 
