@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Package chart
-        run: helm package fiap-lanches-0.2.0
+        run: helm package charts
 
       - name: Upload arquivo
         uses: actions/upload-artifact@v2
