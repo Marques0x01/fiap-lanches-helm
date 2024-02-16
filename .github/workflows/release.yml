@@ -47,6 +47,9 @@ jobs:
       - name: Package chart
         run: helm package ./
 
+      - name: Dir
+        run: ls
+
       # - name: Run chart-releaser
       #   uses: helm/chart-releaser-action@v1.6.0
       #   with:
