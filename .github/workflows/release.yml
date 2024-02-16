@@ -63,7 +63,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: lastesd
+          tag_name: lastesd-1
           release_name: Release lasted
           draft: false
           prerelease: false
