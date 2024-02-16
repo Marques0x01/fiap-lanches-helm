@@ -49,61 +49,14 @@ jobs:
       - name: Package chart
         run: helm package ./
 
-      # - name: Dir
-      #   run: ls
+      - name: Send for Gitlab
+        run: curl --request POST --form 'chart=@fiap-lanches-0.2.0.tgz' --user jonathan.gomess1:glpat-4Dbov9sMG_ZwDgsL-HWs https://gitlab.com/api/v4/projects/55019864/packages/helm/api/stable/charts
 
-      # - name: Configure AWS Credentials Action for GitHub Actions
-      #   uses: aws-actions/configure-aws-credentials@v4.0.2
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: us-east-1
-      
-      # - name: Create ecr helm
-      #   run: aws ecr create-repository --repository-name fiap-lanches-helm --region us-east-1
-
-      # - name: Auth
-      #   run: aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 064829921259.dkr.ecr.us-east-1.amazonaws.com
-
-      # - name: Push helm
-      #   run: helm push fiap-lanches-0.2.0.tgz oci://064829921259.dkr.ecr.us-east-1.amazonaws.com/
+      # - name: Run chart-releaser
+      #   uses: helm/chart-releaser-action@v1.3.0
+      #   # with:
+      #   #   skip_packaging: true
+      #   #   pages_branch: gh-pages
       #   env:
-      #     HELM_EXPERIMENTAL_OCI: 1
+      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.3.0
-        # with:
-        #   skip_packaging: true
-        #   pages_branch: gh-pages
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
-
-        # Criar release com base nos charts de Helm
-      # - name: Criar Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: v0.2.0  # Substitua pelo nome da sua tag
-      #     release_name: fiap-lanches-v0.2.0  # Substitua pelo nome do seu release
-      #     body: Versão v.2.0 do aplicativo.  # Substitua pelo corpo do seu release
-      #     draft: false
-      #     prerelease: false
-      #     files: ./*.tgz  # Es 
-
-      # - name: Upload file to release
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1
-      #   with:
-      #     upload_url: ${{ github.event.release.upload_url }}
-      #     asset_path: ./
-      #     asset_name: fiap-lanches-v0.2.0.tgz
-      #     asset_content_type: application/octet-stream
-
-      - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
-        with:
-          args: fiap-lanches-0.2.0.tgz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
