@@ -38,8 +38,8 @@ jobs:
       - name: Remove Git Tag
         
         run: |
-          git tag -d Release lasted
-          git push origin :Release lasted
+          git tag -d lastesd-1
+          git push origin :lastesd-1
 
       - name: Install Helm
         uses: azure/setup-helm@v3
