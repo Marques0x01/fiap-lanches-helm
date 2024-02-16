@@ -36,8 +36,9 @@ jobs:
           git config user.email "jonathan.gomess1@gmail.com"
 
       - name: Remove Git Tag
-        if: startsWith(github.ref, 'refs/tags/fiap-lanches-0.2.0')
+        
         run: |
+          echo "Um push foi feito com a seguinte tag: ${GITHUB_REF#refs/tags/}"
           git tag -d fiap-lanches-0.2.0
           git push origin :fiap-lanches-0.2.0
 
