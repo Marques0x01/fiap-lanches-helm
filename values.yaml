@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: fiaplanches165/fiap-lanches-app
+  repository: fiaplanches165/fiaplanches
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2.0.4
+  tag: 2.0.5
 
 imagePullSecrets: []
 nameOverride: ""
@@ -45,7 +45,7 @@ ingress:
   #      - chart-example.local
 
 service:
-  type: NodePort
+  type: LoadBalancer
   port: 80
 
 resources:
