@@ -63,8 +63,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.release.tag_name }}
-          release_name: Release ${{ github.event.release.tag_name }}
-          body: Versão ${{ github.event.release.tag_name }} do aplicativo.
+          tag_name: lastesd
+          release_name: Release lasted
           draft: false
           prerelease: false
