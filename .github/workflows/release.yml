@@ -69,12 +69,12 @@ jobs:
           prerelease: false
 
       - name: Adicionar Pasta como Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./folder.zip  # Substitua pelo caminho para o arquivo compactado
-        asset_name: your-folder-name.zip  # Substitua pelo nome do arquivo compactado
-        asset_content_type: application/zip  # Substitua pelo tipo de conteúdo adequado          
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          
+          asset_path: ./folder.zip  # Substitua pelo caminho para o arquivo compactado
+          asset_name: your-folder-name.zip  # Substitua pelo nome do arquivo compactado
+          asset_content_type: application/zip  # Substitua pelo tipo de conteúdo adequado          
