@@ -88,4 +88,3 @@ jobs:
           body: Versão v.2.0 do aplicativo.  # Substitua pelo corpo do seu release
           draft: false
           prerelease: false
-          files: ./*.tgz  # Es 
