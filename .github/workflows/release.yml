@@ -47,10 +47,24 @@ jobs:
       - name: Package chart
         run: helm package ./
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.6.0
-        with:
-          skip_packaging: true
-          pages_branch: gh-pages
+      # - name: Run chart-releaser
+      #   uses: helm/chart-releaser-action@v1.6.0
+      #   with:
+      #     skip_packaging: true
+      #     pages_branch: gh-pages
+      #   env:
+      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
+
+        # Criar release com base nos charts de Helm
+      - name: Criar Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0  # Substitua pelo nome da sua tag
+          release_name: Release v1.0.0  # Substitua pelo nome do seu release
+          body: Versão v1.0.0 do aplicativo.  # Substitua pelo corpo do seu release
+          draft: false
+          prerelease: false
+          files: ./*.tgz  # Es 
