@@ -98,4 +98,3 @@ jobs:
           asset_path: ./path/to/your/file
           asset_name: your_file_name.ext
           asset_content_type: application/octet-stream
-          token: ${{ secrets.GITHUB_TOKEN }}
