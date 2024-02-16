@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  release:
     permissions:
       contents: write
     # The type of runner that the job will run on
@@ -44,37 +44,37 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Package chart
-        run: helm package ./
+      # - name: Package chart
+      #   run: helm package ./
 
-      - name: Dir
-        run: ls
+      # - name: Dir
+      #   run: ls
 
-      - name: Configure AWS Credentials Action for GitHub Actions
-        uses: aws-actions/configure-aws-credentials@v4.0.2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+      # - name: Configure AWS Credentials Action for GitHub Actions
+      #   uses: aws-actions/configure-aws-credentials@v4.0.2
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-east-1
       
       # - name: Create ecr helm
       #   run: aws ecr create-repository --repository-name fiap-lanches-helm --region us-east-1
 
-      - name: Auth
-        run: aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 064829921259.dkr.ecr.us-east-1.amazonaws.com
+      # - name: Auth
+      #   run: aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 064829921259.dkr.ecr.us-east-1.amazonaws.com
 
-      - name: Push helm
-        run: helm push fiap-lanches-0.2.0.tgz oci://064829921259.dkr.ecr.us-east-1.amazonaws.com/
-        env:
-          HELM_EXPERIMENTAL_OCI: 1
-
-      # - name: Run chart-releaser
-      #   uses: helm/chart-releaser-action@v1.6.0
-      #   with:
-      #     skip_packaging: true
-      #     pages_branch: gh-pages
+      # - name: Push helm
+      #   run: helm push fiap-lanches-0.2.0.tgz oci://064829921259.dkr.ecr.us-east-1.amazonaws.com/
       #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
+      #     HELM_EXPERIMENTAL_OCI: 1
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        # with:
+        #   skip_packaging: true
+        #   pages_branch: gh-pages
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
 
         # Criar release com base nos charts de Helm
       # - name: Criar Release
