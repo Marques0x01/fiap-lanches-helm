@@ -49,11 +49,6 @@ jobs:
       - name: Package chart
         run: helm package charts
 
-      - name: Upload arquivo
-        uses: actions/upload-artifact@v2
-        with:
-          path: ./
-  
       # - name: Run chart-releaser
       #   uses: helm/chart-releaser-action@v1.6.0
       #   with:
@@ -61,3 +56,15 @@ jobs:
       #     pages_branch: gh-pages
       #   env:
       #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Publicar Release
+        id: upload-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.release.tag_name }}
+          release_name: Release ${{ github.event.release.tag_name }}
+          body: Versão ${{ github.event.release.tag_name }} do aplicativo.
+          draft: false
+          prerelease: false
