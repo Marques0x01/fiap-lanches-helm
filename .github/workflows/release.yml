@@ -35,11 +35,11 @@ jobs:
           git config user.name "Jonathan"
           git config user.email "jonathan.gomess1@gmail.com"
 
-      - name: Remove Git Tag
+      # - name: Remove Git Tag
         
-        run: |
-          git tag -d lastesd-1
-          git push origin :lastesd-1
+      #   run: |
+      #     git tag -d lastesd-1
+      #     git push origin :lastesd-1
 
       - name: Install Helm
         uses: azure/setup-helm@v3
