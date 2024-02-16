@@ -49,32 +49,10 @@ jobs:
       - name: Package chart
         run: helm package charts
 
-      # - name: Run chart-releaser
-      #   uses: helm/chart-releaser-action@v1.6.0
-      #   with:
-      #     charts_dir: charts
-      #     pages_branch: gh-pages
-      #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Publicar Release
-        id: upload-release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
         with:
-          tag_name: lastesd-1
-          release_name: Release lasted
-          draft: false
-          prerelease: false
-
-      - name: Adicionar Pasta como Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
+          charts_dir: charts
+          pages_branch: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          
-          asset_path: ./folder.zip  # Substitua pelo caminho para o arquivo compactado
-          asset_name: your-folder-name.zip  # Substitua pelo nome do arquivo compactado
-          asset_content_type: application/zip  # Substitua pelo tipo de conteúdo adequado          
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
