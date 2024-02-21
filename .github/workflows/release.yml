@@ -37,12 +37,6 @@ jobs:
           git config user.name "Jonathan"
           git config user.email "jonathan.gomess1@gmail.com"
 
-      # - name: Remove Git Tag
-        
-      #   run: |
-      #     git tag -d lastesd-1
-      #     git push origin :lastesd-1
-
       - name: Install Helm
         uses: azure/setup-helm@v3
 
@@ -52,11 +46,4 @@ jobs:
       - name: Send for Gitlab
         run: curl --request POST --form 'chart=@fiap-lanches-0.2.0.tgz' --user jonathan.gomess1:glpat-4Dbov9sMG_ZwDgsL-HWs https://gitlab.com/api/v4/projects/55019864/packages/helm/api/stable/charts
 
-      # - name: Run chart-releaser
-      #   uses: helm/chart-releaser-action@v1.3.0
-      #   # with:
-      #   #   skip_packaging: true
-      #   #   pages_branch: gh-pages
-      #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"     
 
