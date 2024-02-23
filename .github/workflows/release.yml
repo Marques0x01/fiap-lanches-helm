@@ -46,10 +46,9 @@ jobs:
       - name: Package and push helm chart to Amazon ECR
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: fiap-lanches
         run: |
-          helm package $REPOSITORY
-          helm push $REPOSITORY-0.3.0.tgz oci://$REGISTRY
+          helm package ./
+          helm push fiap-lanches-0.3.0.tgz oci://$REGISTRY
       # - name: Configure Git
       #   run: |
       #     git config user.name "Jonathan"
