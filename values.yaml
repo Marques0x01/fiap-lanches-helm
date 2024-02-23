@@ -8,7 +8,7 @@ image:
   repository: 064829921259.dkr.ecr.us-east-1.amazonaws.com/fiap-lanches
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 5f1e884268871d5a247f37ed132e6d4c8b7f5d4e
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
