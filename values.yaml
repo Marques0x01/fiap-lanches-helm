@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: 767398038750.dkr.ecr.us-east-1.amazonaws.com/fiap-lanches
+  repository: 064829921259.dkr.ecr.us-east-1.amazonaws.com/fiap-lanches
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
