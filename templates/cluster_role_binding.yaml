@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: jamal-list-cluster-roles
+subjects:
+- kind: User
+  name: jamal
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: view-roles  # ou o nome do ClusterRole que concede permissão de visualização
+  apiGroup: rbac.authorization.k8s.io
